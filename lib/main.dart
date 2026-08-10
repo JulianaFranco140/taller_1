@@ -36,6 +36,25 @@ void main() {
     false,
   ];
 
+  // Prueba temporal de validarLectura y estadoSincronizacion.
+  // El resto del TODO (puntaje, clasificacion, resumen) sigue pendiente.
+  for (int i = 0; i < ids.length; i++) {
+    final int id = ids[i];
+    final int temperatura = temperaturas[i];
+    final int retraso = retrasosMinutos[i];
+    final int bateria = baterias[i];
+    final bool pendiente = pendientesSync[i];
+
+    final bool esValida = validarLectura(temperatura, retraso, bateria);
+    final String sincronizacion = estadoSincronizacion(pendiente);
+
+    if (esValida) {
+      print('ID $id: valida | Sincronizacion: $sincronizacion');
+    } else {
+      print('ID $id: invalida (temp=$temperatura, retraso=$retraso, bateria=$bateria)');
+    }
+  }
+
   // TODO:
   // 1. Recorrer todas las entregas.
   // 2. Descartar lecturas invalidas e indicar la causa.
@@ -50,8 +69,18 @@ bool validarLectura(
   int retrasoMinutos,
   int bateria,
 ) {
-  // TODO
-  return false;
+  const int temperaturaMinima = -20;
+  const int temperaturaMaxima = 50;
+  const int bateriaMinima = 0;
+  const int bateriaMaxima = 100;
+
+  final bool temperaturaValida =
+      temperatura >= temperaturaMinima && temperatura <= temperaturaMaxima;
+  final bool retrasoValido = retrasoMinutos >= 0;
+  final bool bateriaValida =
+      bateria >= bateriaMinima && bateria <= bateriaMaxima;
+
+  return temperaturaValida && retrasoValido && bateriaValida;
 }
 
 int calcularPuntajeRiesgo(
@@ -71,6 +100,5 @@ String clasificarRiesgo(int puntaje) {
 }
 
 String estadoSincronizacion(bool pendiente) {
-  // TODO
-  return '';
+  return pendiente ? 'Pendiente de sincronizacion' : 'Sincronizado';
 }
