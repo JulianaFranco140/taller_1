@@ -1,17 +1,63 @@
-# taller_1
+# Taller 1 - Desarrollo Móvil (Dart & Flutter)
 
-A new Flutter project.
+Primer taller de la asignatura de Desarrollo Móvil. El objetivo es practicar los
+fundamentos del lenguaje Dart dentro de un proyecto Flutter ya creado, sin necesidad
+de construir interfaz gráfica: toda la salida del ejercicio se observa por consola.
 
-## Getting Started
+## Integrantes
 
-This project is a starting point for a Flutter application.
+- Juliana Franco Alzate
+- Samuel David Gallego Meneses
 
-A few resources to get you started if this is your first Flutter project:
+## Descripción
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+El ejercicio se desarrolla en [`lib/main.dart`](lib/main.dart) y consiste en procesar
+un conjunto de listas paralelas que representan entregas (ids, tipo de carga,
+temperatura, retraso, batería y estado de sincronización), validando cada lectura,
+calculando un puntaje y clasificación por entrega, y generando un resumen final.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Temas cubiertos:
+
+- Variables (`var`, `final`, `const`) y tipos de datos
+- Operadores y condicionales
+- Ciclos y listas
+- Funciones
+- Salida por consola con `print()`
+
+## Requisitos previos
+
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) instalado y
+  configurado (`flutter doctor` sin errores).
+
+## Cómo ejecutarlo
+
+1. Clonar el repositorio e ingresar a la carpeta del proyecto:
+
+   ```bash
+   git clone <url-del-repositorio>
+   cd taller_1
+   ```
+
+2. Instalar las dependencias:
+
+   ```bash
+   flutter pub get
+   ```
+
+3. Ejecutar el proyecto en el dispositivo/plataforma disponible (por ejemplo,
+   Linux, Windows o Chrome). La salida del ejercicio se imprime en la consola
+   donde se ejecuta el comando:
+
+   ```bash
+   flutter run -d linux    # o -d windows, -d chrome, según tu equipo
+   ```
+
+   También se puede listar los dispositivos disponibles con `flutter devices`.
+
+## Estructura del proyecto
+
+```
+lib/
+  main.dart   # Lógica del taller (variables, listas, funciones, etc.)
+test/         # Pruebas del proyecto
+```
