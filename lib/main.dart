@@ -84,7 +84,10 @@ var contadorinvalidas = 0;
 var idmayorpuntaje = 0;
 var mayorpuntaje = 0;
 var contadorvalidaspendientes = 0;
-
+var contadorCritico = 0;
+var contadorAlto = 0;
+var contadorMedio = 0;
+var contadorBajo = 0;
 
   for (int i = 0; i < ids.length; i++) {
     final int id = ids[i];
@@ -100,32 +103,40 @@ var contadorvalidaspendientes = 0;
       final int puntaje = calcularpuntajetemperatura(temperatura) + calcularpuntajeretraso(retraso) + calcularpuntajebateria(bateria) + calcularpuntajecarga(tipoCarga) + calcularpuntajependiente(pendiente);
       final String clasificacion = clasificarRiesgo(puntaje);
       print('Puntaje: $puntaje | Clasificacion: $clasificacion');
-    
-    promedioPuntaje += puntaje;
-    contadorvalidas+=1;
-    if (puntaje > mayorpuntaje) {
-      mayorpuntaje = puntaje;
-      idmayorpuntaje = id;
-    }
-    if (pendiente) {
-      contadorvalidaspendientes+=1;
-    }   
-    } 
-      
-    
-    
-    
-    else {
+
+      promedioPuntaje += puntaje;
+      contadorvalidas += 1;
+      if (puntaje > mayorpuntaje) {
+        mayorpuntaje = puntaje;
+        idmayorpuntaje = id;
+      }
+      if (pendiente) {
+        contadorvalidaspendientes += 1;
+      }
+      if (clasificacion == 'CRITICO') {
+        contadorCritico += 1;
+      } else if (clasificacion == 'ALTO') {
+        contadorAlto += 1;
+      } else if (clasificacion == 'MEDIO') {
+        contadorMedio += 1;
+      } else if (clasificacion == 'BAJO') {
+        contadorBajo += 1;
+      }
+    } else {
       print('ID $id: invalida $esValida');
-      contadorinvalidas+=1;
+      contadorinvalidas += 1;
     }
   }
 
-print('Promedio de puntaje: ${promedioPuntaje / contadorvalidas}');
-print('ID con mayor puntaje: $idmayorpuntaje con $mayorpuntaje puntos');
-print('Cantidad de validas: $contadorvalidas');
-print('Cantidad de invalidas: $contadorinvalidas');
-print('Cantidad de validas pendientes: $contadorvalidaspendientes');
+  print('Promedio de puntaje: ${promedioPuntaje / contadorvalidas}');
+  print('ID con mayor puntaje: $idmayorpuntaje con $mayorpuntaje puntos');
+  print('Cantidad de validas: $contadorvalidas');
+  print('Cantidad de invalidas: $contadorinvalidas');
+  print('Cantidad de validas pendientes: $contadorvalidaspendientes');
+  print('Riesgo CRITICO: $contadorCritico');
+  print('Riesgo ALTO: $contadorAlto');
+  print('Riesgo MEDIO (intermedio): $contadorMedio');
+  print('Riesgo BAJO: $contadorBajo');
 
 
 
